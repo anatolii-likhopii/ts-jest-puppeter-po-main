@@ -16,10 +16,10 @@ class LoginPO extends BasePO {
     await page.type(this.$passwordInput, password);
     await page.click(this.$loginButton);
   }
-  async checkSuccessLogin() {
+  async checkSuccessLogin(): Promise<ElementHandle<Element> | null> {
      return await page.waitForSelector(this.$successMessageContainer, { timeout: 1000 });
   }
-  async checkErrorLogin(){
+  async checkErrorLogin(): Promise<ElementHandle<Element> | null>{
     return await page.waitForSelector(this.$errorMessageContainer, { timeout: 1000 });
   }
 }
