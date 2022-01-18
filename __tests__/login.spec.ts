@@ -9,6 +9,7 @@ describe('Login', () => {
     username | password
     ${'wrong_username'}| ${'sandbox'}, 
     ${'admin'}| ${'wrong_password'},
+    ${''}| ${''},
   `('should display error message when username|password is "$username|$password"', async ({ username, password }) => {
     await loginPo.login(username, password);
     expect(await loginPo.checkErrorLogin()).toBeTruthy();
@@ -18,4 +19,6 @@ describe('Login', () => {
     await loginPo.login('admin', 'sandbox');
     expect(await loginPo.checkSuccessLogin()).toBeTruthy();
   });
+
+  
 });
